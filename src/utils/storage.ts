@@ -38,6 +38,39 @@ export interface ReadinessAssessment {
     title: string;
     phone: string;
     email: string;
+    facilityName: string;
+    facilityAddress: string;
+    facilityCity: string;
+    facilityZip: string;
+  };
+  facilityInfo: {
+    has24HourED: boolean | undefined;
+    hospitalType: string;
+    otherHospitalType?: string;
+    edConfiguration: string;
+    otherEDConfig?: string;
+  };
+  traumaDesignation: {
+    isTraumaCenter: boolean | undefined;
+    verificationBodies: {
+      acs: boolean | undefined;
+      stateRegional: boolean | undefined;
+    };
+    adultLevel: string;
+    pediatricLevel: string;
+  };
+  inpatientServices: {
+    newbornNursery: boolean | undefined;
+    nicu: boolean | undefined;
+    picu: boolean | undefined;
+    pediatricStepDown: boolean | undefined;
+    pediatricWard: boolean | undefined;
+    adultICU: boolean | undefined;
+    adultStepDown: boolean | undefined;
+    adultWard: boolean | undefined;
+    childrenInAdultICU?: boolean | undefined;
+    childrenInAdultStepDown?: boolean | undefined;
+    childrenInAdultWard?: boolean | undefined;
   };
   coordinator: {
     identified: boolean | undefined;
@@ -114,7 +147,6 @@ export interface ReadinessAssessment {
     pediatricICUAdmissions: string;
     pediatricTraumaAdmissions: string;
   };
-  hospitalType: string;
   hasEmergencyDepartment: boolean | undefined;
   emergencyDepartmentConfiguration: string;
   emergencyDepartmentBeds: string;
@@ -438,7 +470,40 @@ export const getDefaultReadinessAssessment = (): ReadinessAssessment => ({
     name: '',
     title: '',
     phone: '',
-    email: ''
+    email: '',
+    facilityName: '',
+    facilityAddress: '',
+    facilityCity: '',
+    facilityZip: ''
+  },
+  facilityInfo: {
+    has24HourED: undefined,
+    hospitalType: '',
+    otherHospitalType: '',
+    edConfiguration: '',
+    otherEDConfig: ''
+  },
+  traumaDesignation: {
+    isTraumaCenter: undefined,
+    verificationBodies: {
+      acs: undefined,
+      stateRegional: undefined
+    },
+    adultLevel: '',
+    pediatricLevel: ''
+  },
+  inpatientServices: {
+    newbornNursery: undefined,
+    nicu: undefined,
+    picu: undefined,
+    pediatricStepDown: undefined,
+    pediatricWard: undefined,
+    adultICU: undefined,
+    adultStepDown: undefined,
+    adultWard: undefined,
+    childrenInAdultICU: undefined,
+    childrenInAdultStepDown: undefined,
+    childrenInAdultWard: undefined
   },
   coordinator: {
     identified: undefined,
@@ -515,7 +580,6 @@ export const getDefaultReadinessAssessment = (): ReadinessAssessment => ({
     pediatricICUAdmissions: '',
     pediatricTraumaAdmissions: ''
   },
-  hospitalType: '',
   hasEmergencyDepartment: undefined,
   emergencyDepartmentConfiguration: '',
   emergencyDepartmentBeds: '',
@@ -716,7 +780,40 @@ export const getReadinessAssessment = async (): Promise<ReadinessAssessment> => 
         name: '',
         title: '',
         phone: '',
-        email: ''
+        email: '',
+        facilityName: '',
+        facilityAddress: '',
+        facilityCity: '',
+        facilityZip: ''
+      },
+      facilityInfo: {
+        has24HourED: undefined,
+        hospitalType: '',
+        otherHospitalType: '',
+        edConfiguration: '',
+        otherEDConfig: ''
+      },
+      traumaDesignation: {
+        isTraumaCenter: undefined,
+        verificationBodies: {
+          acs: undefined,
+          stateRegional: undefined
+        },
+        adultLevel: '',
+        pediatricLevel: ''
+      },
+      inpatientServices: {
+        newbornNursery: undefined,
+        nicu: undefined,
+        picu: undefined,
+        pediatricStepDown: undefined,
+        pediatricWard: undefined,
+        adultICU: undefined,
+        adultStepDown: undefined,
+        adultWard: undefined,
+        childrenInAdultICU: undefined,
+        childrenInAdultStepDown: undefined,
+        childrenInAdultWard: undefined
       },
       coordinator: {
         identified: undefined,
@@ -793,7 +890,6 @@ export const getReadinessAssessment = async (): Promise<ReadinessAssessment> => 
         pediatricICUAdmissions: '',
         pediatricTraumaAdmissions: ''
       },
-      hospitalType: '',
       hasEmergencyDepartment: undefined,
       emergencyDepartmentConfiguration: '',
       emergencyDepartmentBeds: '',
