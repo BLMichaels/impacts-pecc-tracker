@@ -33,6 +33,12 @@ export interface Milestone {
 }
 
 export interface ReadinessAssessment {
+  contactInfo: {
+    name: string;
+    title: string;
+    phone: string;
+    email: string;
+  };
   coordinator: {
     identified: boolean | undefined;
     type: string;
@@ -428,6 +434,12 @@ export const getDefaultMilestones = (): Milestone[] => {
 };
 
 export const getDefaultReadinessAssessment = (): ReadinessAssessment => ({
+  contactInfo: {
+    name: '',
+    title: '',
+    phone: '',
+    email: ''
+  },
   coordinator: {
     identified: undefined,
     type: '',
@@ -700,6 +712,12 @@ export const getReadinessAssessment = async (): Promise<ReadinessAssessment> => 
     console.error('Error fetching readiness assessment:', error);
     // Return default assessment if fetch fails
     return {
+      contactInfo: {
+        name: '',
+        title: '',
+        phone: '',
+        email: ''
+      },
       coordinator: {
         identified: undefined,
         type: '',
