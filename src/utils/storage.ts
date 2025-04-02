@@ -72,72 +72,176 @@ export interface ReadinessAssessment {
     childrenInAdultStepDown?: boolean | undefined;
     childrenInAdultWard?: boolean | undefined;
   };
-  coordinator: {
-    identified: boolean | undefined;
-    type: string;
-    dedicatedTime: boolean | undefined;
-    scope: string;
+  administration: {
+    physicianCoordinator: {
+      hasCoordinator: boolean | undefined;
+      type: string;
+      hasDedicatedTime: boolean | undefined;
+      scope: string;
+    };
+    nurseCoordinator: {
+      hasCoordinator: boolean | undefined;
+      type: string;
+      hasDedicatedTime: boolean | undefined;
+      scope: string;
+    };
+    hasPediatricED: boolean | undefined;
+    hasPediatricInpatient: boolean | undefined;
+    hasPediatricICU: boolean | undefined;
+    hasPediatricSurgery: boolean | undefined;
   };
-  components: {
-    trauma: boolean | undefined;
-    emergency: boolean | undefined;
-    inpatient: boolean | undefined;
-    outpatient: boolean | undefined;
-    transport: boolean | undefined;
-    rehabilitation: boolean | undefined;
-    childLife: boolean | undefined;
-    socialWork: boolean | undefined;
-    pastoralCare: boolean | undefined;
-    familySupport: boolean | undefined;
-    quality: boolean | undefined;
-    research: boolean | undefined;
-    education: boolean | undefined;
-    disaster: boolean | undefined;
-    injury: boolean | undefined;
+  personnel: {
+    has24HourPhysician: boolean | undefined;
+    hasPediatrician: boolean | undefined;
+    hasPediatricEM: boolean | undefined;
+    hasPediatricNurse: boolean | undefined;
+    hasPediatricRT: boolean | undefined;
+    hasPALS: boolean | undefined;
+    hasENPC: boolean | undefined;
+    hasTNCC: boolean | undefined;
+    hasATLS: boolean | undefined;
   };
-  equipment: {
-    trauma: {
-      airway: boolean | undefined;
-      breathing: boolean | undefined;
-      circulation: boolean | undefined;
-      disability: boolean | undefined;
-      exposure: boolean | undefined;
+  qualityImprovement: {
+    hasQIPlan: boolean | undefined;
+    components: {
+      trauma: boolean | undefined;
+      emergency: boolean | undefined;
+      inpatient: boolean | undefined;
+      outpatient: boolean | undefined;
+      transport: boolean | undefined;
+      rehabilitation: boolean | undefined;
+      childLife: boolean | undefined;
+      socialWork: boolean | undefined;
+      pastoralCare: boolean | undefined;
+      familySupport: boolean | undefined;
+      quality: boolean | undefined;
+      research: boolean | undefined;
+      education: boolean | undefined;
+      disaster: boolean | undefined;
+      injury: boolean | undefined;
     };
-    emergency: {
-      airway: boolean | undefined;
-      breathing: boolean | undefined;
-      circulation: boolean | undefined;
-      disability: boolean | undefined;
-      exposure: boolean | undefined;
+  };
+  patientSafety: {
+    weightInKg: boolean | undefined;
+    weightRecordedInKg: boolean | undefined;
+    vitalsRecorded: boolean | undefined;
+    bloodPressureMonitoring: boolean | undefined;
+    pulseOximetry: boolean | undefined;
+    endTidalCO2: boolean | undefined;
+    abnormalVitalsNotification: boolean | undefined;
+    preCalculatedDosing: boolean | undefined;
+    interpreterServices: boolean | undefined;
+    consciousnessAssessment: boolean | undefined;
+    painAssessment: boolean | undefined;
+    hasPediatricSafety: boolean | undefined;
+    hasPediatricMedication: boolean | undefined;
+    hasPediatricEquipment: boolean | undefined;
+    hasPediatricEnvironment: boolean | undefined;
+    hasPediatricHandoff: boolean | undefined;
+    hasPediatricTransfer: boolean | undefined;
+    hasPediatricDischarge: boolean | undefined;
+    hasPediatricFollowup: boolean | undefined;
+  };
+  policies: {
+    triagePolicy: boolean | undefined;
+    assessmentReassessment: boolean | undefined;
+    immunizationAssessment: boolean | undefined;
+    childMaltreatment: boolean | undefined;
+    deathInED: boolean | undefined;
+    radiationReduction: boolean | undefined;
+    behavioralHealth: boolean | undefined;
+    transferGuidelines: boolean | undefined;
+    hasPediatricAdmission: boolean | undefined;
+    hasPediatricTransfer: boolean | undefined;
+    hasPediatricConsent: boolean | undefined;
+    hasPediatricRestraint: boolean | undefined;
+    hasPediatricTriage: boolean | undefined;
+    hasPediatricPain: boolean | undefined;
+    hasPediatricSedation: boolean | undefined;
+    hasPediatricImaging: boolean | undefined;
+  };
+  familyCenteredCare: {
+    hasPolicy: boolean | undefined;
+    components: {
+      decisionMaking: boolean | undefined;
+      medicationSafety: boolean | undefined;
+      familyPresence: boolean | undefined;
+      education: boolean | undefined;
+      bereavement: boolean | undefined;
     };
-    inpatient: {
-      airway: boolean | undefined;
-      breathing: boolean | undefined;
-      circulation: boolean | undefined;
-      disability: boolean | undefined;
-      exposure: boolean | undefined;
+    hasFamilyPresence: boolean | undefined;
+    hasFamilySupport: boolean | undefined;
+    hasFamilyEducation: boolean | undefined;
+    hasFamilyFeedback: boolean | undefined;
+    hasCulturalCompetency: boolean | undefined;
+    hasLanguageServices: boolean | undefined;
+    hasInterpreter: boolean | undefined;
+    hasTranslation: boolean | undefined;
+  };
+  disasterPlanning: {
+    addressesChildren: boolean | undefined;
+    components: {
+      medicationsSupplies: boolean | undefined;
+      decontamination: boolean | undefined;
+      familyReunification: boolean | undefined;
+      pediatricDrills: boolean | undefined;
+      surgeCapacity: boolean | undefined;
+      behavioralHealth: boolean | undefined;
+      socialServices: boolean | undefined;
+      specialNeeds: boolean | undefined;
     };
-    outpatient: {
-      airway: boolean | undefined;
-      breathing: boolean | undefined;
-      circulation: boolean | undefined;
-      disability: boolean | undefined;
-      exposure: boolean | undefined;
-    };
-    transport: {
-      airway: boolean | undefined;
-      breathing: boolean | undefined;
-      circulation: boolean | undefined;
-      disability: boolean | undefined;
-      exposure: boolean | undefined;
-    };
-    rehabilitation: {
-      airway: boolean | undefined;
-      breathing: boolean | undefined;
-      circulation: boolean | undefined;
-      disability: boolean | undefined;
-      exposure: boolean | undefined;
-    };
+    hasPediatricDisaster: boolean | undefined;
+    hasPediatricMassCasualty: boolean | undefined;
+    hasPediatricEvacuation: boolean | undefined;
+    hasPediatricShelter: boolean | undefined;
+    hasPediatricSupplies: boolean | undefined;
+    hasPediatricEquipment: boolean | undefined;
+    hasPediatricMedications: boolean | undefined;
+    hasPediatricStaff: boolean | undefined;
+  };
+  equipmentManagement: {
+    hasPediatricInventory: boolean | undefined;
+    hasPediatricMaintenance: boolean | undefined;
+    hasPediatricCalibration: boolean | undefined;
+    hasPediatricReplacement: boolean | undefined;
+    hasPediatricTraining: boolean | undefined;
+    hasPediatricCompetency: boolean | undefined;
+    hasPediatricDocumentation: boolean | undefined;
+    hasPediatricQuality: boolean | undefined;
+  };
+  monitoringEquipment: {
+    hasPediatricStethoscope: boolean | undefined;
+    hasPediatricBP: boolean | undefined;
+    hasPediatricThermometer: boolean | undefined;
+    hasPediatricScale: boolean | undefined;
+    hasPediatricECG: boolean | undefined;
+    hasPediatricPulse: boolean | undefined;
+    hasPediatricETCO2: boolean | undefined;
+    hasPediatricGlucose: boolean | undefined;
+  };
+  resuscitationEquipment: {
+    gauge22: boolean | undefined;
+    gauge24: boolean | undefined;
+    ioNeedles: boolean | undefined;
+    ivAdministration: boolean | undefined;
+    hasPediatricBag: boolean | undefined;
+    hasPediatricSuction: boolean | undefined;
+    hasPediatricOxygen: boolean | undefined;
+    hasPediatricDefibrillator: boolean | undefined;
+    hasPediatricETT: boolean | undefined;
+    hasPediatricLMA: boolean | undefined;
+    hasPediatricIO: boolean | undefined;
+    hasPediatricChest: boolean | undefined;
+  };
+  respiratoryEquipment: {
+    hasPediatricNebulizer: boolean | undefined;
+    hasPediatricSpacer: boolean | undefined;
+    hasPediatricMetered: boolean | undefined;
+    hasPediatricCPAP: boolean | undefined;
+    hasPediatricVentilator: boolean | undefined;
+    hasPediatricHighFlow: boolean | undefined;
+    hasPediatricSuction: boolean | undefined;
+    hasPediatricChest: boolean | undefined;
   };
   patientVolume: {
     totalPatients: string;
@@ -147,136 +251,6 @@ export interface ReadinessAssessment {
     pediatricICUAdmissions: string;
     pediatricTraumaAdmissions: string;
   };
-  hasEmergencyDepartment: boolean | undefined;
-  emergencyDepartmentConfiguration: string;
-  emergencyDepartmentBeds: string;
-  emergencyDepartmentTraumaBays: string;
-  emergencyDepartmentTraumaBayConfiguration: string;
-  emergencyDepartmentTraumaBayEquipment: string;
-  emergencyDepartmentTraumaBayStaffing: string;
-  emergencyDepartmentTraumaBayProtocols: string;
-  emergencyDepartmentTraumaBayDocumentation: string;
-  emergencyDepartmentTraumaBayQuality: string;
-  emergencyDepartmentTraumaBayResearch: string;
-  emergencyDepartmentTraumaBayEducation: string;
-  emergencyDepartmentTraumaBayFamily: string;
-  emergencyDepartmentTraumaBayDisaster: string;
-  emergencyDepartmentTraumaBayInjury: string;
-  emergencyDepartmentTraumaBayTransport: string;
-  emergencyDepartmentTraumaBayRehabilitation: string;
-  emergencyDepartmentTraumaBayOutpatient: string;
-  emergencyDepartmentTraumaBayInpatient: string;
-  emergencyDepartmentTraumaBaySocial: string;
-  emergencyDepartmentTraumaBayPastoral: string;
-  emergencyDepartmentTraumaBayChildLife: string;
-  emergencyDepartmentTraumaBayQualityImprovement: string;
-  emergencyDepartmentTraumaBayResearchActivities: string;
-  emergencyDepartmentTraumaBayEducationActivities: string;
-  emergencyDepartmentTraumaBayFamilySupport: string;
-  emergencyDepartmentTraumaBayDisasterPreparedness: string;
-  emergencyDepartmentTraumaBayInjuryPrevention: string;
-  emergencyDepartmentTraumaBayTransportCoordination: string;
-  emergencyDepartmentTraumaBayRehabilitationCoordination: string;
-  emergencyDepartmentTraumaBayOutpatientCoordination: string;
-  emergencyDepartmentTraumaBayInpatientCoordination: string;
-  emergencyDepartmentTraumaBaySocialWorkCoordination: string;
-  emergencyDepartmentTraumaBayPastoralCareCoordination: string;
-  emergencyDepartmentTraumaBayChildLifeCoordination: string;
-  emergencyDepartmentTraumaBayQualityImprovementCoordination: string;
-  emergencyDepartmentTraumaBayResearchCoordination: string;
-  emergencyDepartmentTraumaBayEducationCoordination: string;
-  emergencyDepartmentTraumaBayFamilySupportCoordination: string;
-  emergencyDepartmentTraumaBayDisasterPreparednessCoordination: string;
-  emergencyDepartmentTraumaBayInjuryPreventionCoordination: string;
-  emergencyDepartmentTraumaBayTransportDocumentation: string;
-  emergencyDepartmentTraumaBayRehabilitationDocumentation: string;
-  emergencyDepartmentTraumaBayOutpatientDocumentation: string;
-  emergencyDepartmentTraumaBayInpatientDocumentation: string;
-  emergencyDepartmentTraumaBaySocialWorkDocumentation: string;
-  emergencyDepartmentTraumaBayPastoralCareDocumentation: string;
-  emergencyDepartmentTraumaBayChildLifeDocumentation: string;
-  emergencyDepartmentTraumaBayQualityImprovementDocumentation: string;
-  emergencyDepartmentTraumaBayResearchDocumentation: string;
-  emergencyDepartmentTraumaBayEducationDocumentation: string;
-  emergencyDepartmentTraumaBayFamilySupportDocumentation: string;
-  emergencyDepartmentTraumaBayDisasterPreparednessDocumentation: string;
-  emergencyDepartmentTraumaBayInjuryPreventionDocumentation: string;
-  emergencyDepartmentTraumaBayTransportQuality: string;
-  emergencyDepartmentTraumaBayRehabilitationQuality: string;
-  emergencyDepartmentTraumaBayOutpatientQuality: string;
-  emergencyDepartmentTraumaBayInpatientQuality: string;
-  emergencyDepartmentTraumaBaySocialWorkQuality: string;
-  emergencyDepartmentTraumaBayPastoralCareQuality: string;
-  emergencyDepartmentTraumaBayChildLifeQuality: string;
-  emergencyDepartmentTraumaBayQualityImprovementQuality: string;
-  emergencyDepartmentTraumaBayResearchQuality: string;
-  emergencyDepartmentTraumaBayEducationQuality: string;
-  emergencyDepartmentTraumaBayFamilySupportQuality: string;
-  emergencyDepartmentTraumaBayDisasterPreparednessQuality: string;
-  emergencyDepartmentTraumaBayInjuryPreventionQuality: string;
-  emergencyDepartmentTraumaBayTransportResearch: string;
-  emergencyDepartmentTraumaBayRehabilitationResearch: string;
-  emergencyDepartmentTraumaBayOutpatientResearch: string;
-  emergencyDepartmentTraumaBayInpatientResearch: string;
-  emergencyDepartmentTraumaBaySocialWorkResearch: string;
-  emergencyDepartmentTraumaBayPastoralCareResearch: string;
-  emergencyDepartmentTraumaBayChildLifeResearch: string;
-  emergencyDepartmentTraumaBayQualityImprovementResearch: string;
-  emergencyDepartmentTraumaBayEducationResearch: string;
-  emergencyDepartmentTraumaBayFamilySupportResearch: string;
-  emergencyDepartmentTraumaBayDisasterPreparednessResearch: string;
-  emergencyDepartmentTraumaBayInjuryPreventionResearch: string;
-  emergencyDepartmentTraumaBayTransportEducation: string;
-  emergencyDepartmentTraumaBayRehabilitationEducation: string;
-  emergencyDepartmentTraumaBayOutpatientEducation: string;
-  emergencyDepartmentTraumaBayInpatientEducation: string;
-  emergencyDepartmentTraumaBaySocialWorkEducation: string;
-  emergencyDepartmentTraumaBayPastoralCareEducation: string;
-  emergencyDepartmentTraumaBayChildLifeEducation: string;
-  emergencyDepartmentTraumaBayQualityImprovementEducation: string;
-  emergencyDepartmentTraumaBayResearchEducation: string;
-  emergencyDepartmentTraumaBayFamilySupportEducation: string;
-  emergencyDepartmentTraumaBayDisasterPreparednessEducation: string;
-  emergencyDepartmentTraumaBayInjuryPreventionEducation: string;
-  emergencyDepartmentTraumaBayTransportFamily: string;
-  emergencyDepartmentTraumaBayRehabilitationFamily: string;
-  emergencyDepartmentTraumaBayOutpatientFamily: string;
-  emergencyDepartmentTraumaBayInpatientFamily: string;
-  emergencyDepartmentTraumaBaySocialWorkFamily: string;
-  emergencyDepartmentTraumaBayPastoralCareFamily: string;
-  emergencyDepartmentTraumaBayChildLifeFamily: string;
-  emergencyDepartmentTraumaBayQualityImprovementFamily: string;
-  emergencyDepartmentTraumaBayResearchFamily: string;
-  emergencyDepartmentTraumaBayEducationFamily: string;
-  emergencyDepartmentTraumaBayFamilySupportFamily: string;
-  emergencyDepartmentTraumaBayDisasterPreparednessFamily: string;
-  emergencyDepartmentTraumaBayInjuryPreventionFamily: string;
-  emergencyDepartmentTraumaBayTransportDisaster: string;
-  emergencyDepartmentTraumaBayRehabilitationDisaster: string;
-  emergencyDepartmentTraumaBayOutpatientDisaster: string;
-  emergencyDepartmentTraumaBayInpatientDisaster: string;
-  emergencyDepartmentTraumaBaySocialWorkDisaster: string;
-  emergencyDepartmentTraumaBayPastoralCareDisaster: string;
-  emergencyDepartmentTraumaBayChildLifeDisaster: string;
-  emergencyDepartmentTraumaBayQualityImprovementDisaster: string;
-  emergencyDepartmentTraumaBayResearchDisaster: string;
-  emergencyDepartmentTraumaBayEducationDisaster: string;
-  emergencyDepartmentTraumaBayFamilySupportDisaster: string;
-  emergencyDepartmentTraumaBayDisasterPreparednessDisaster: string;
-  emergencyDepartmentTraumaBayInjuryPreventionDisaster: string;
-  emergencyDepartmentTraumaBayTransportInjury: string;
-  emergencyDepartmentTraumaBayRehabilitationInjury: string;
-  emergencyDepartmentTraumaBayOutpatientInjury: string;
-  emergencyDepartmentTraumaBayInpatientInjury: string;
-  emergencyDepartmentTraumaBaySocialWorkInjury: string;
-  emergencyDepartmentTraumaBayPastoralCareInjury: string;
-  emergencyDepartmentTraumaBayChildLifeInjury: string;
-  emergencyDepartmentTraumaBayQualityImprovementInjury: string;
-  emergencyDepartmentTraumaBayResearchInjury: string;
-  emergencyDepartmentTraumaBayEducationInjury: string;
-  emergencyDepartmentTraumaBayFamilySupportInjury: string;
-  emergencyDepartmentTraumaBayDisasterPreparednessInjury: string;
-  emergencyDepartmentTraumaBayInjuryPreventionInjury: string;
 }
 
 const STORAGE_PREFIX = 'impacts_';
@@ -505,72 +479,176 @@ export const getDefaultReadinessAssessment = (): ReadinessAssessment => ({
     childrenInAdultStepDown: undefined,
     childrenInAdultWard: undefined
   },
-  coordinator: {
-    identified: undefined,
-    type: '',
-    dedicatedTime: undefined,
-    scope: ''
+  administration: {
+    physicianCoordinator: {
+      hasCoordinator: undefined,
+      type: '',
+      hasDedicatedTime: undefined,
+      scope: ''
+    },
+    nurseCoordinator: {
+      hasCoordinator: undefined,
+      type: '',
+      hasDedicatedTime: undefined,
+      scope: ''
+    },
+    hasPediatricED: undefined,
+    hasPediatricInpatient: undefined,
+    hasPediatricICU: undefined,
+    hasPediatricSurgery: undefined
   },
-  components: {
-    trauma: undefined,
-    emergency: undefined,
-    inpatient: undefined,
-    outpatient: undefined,
-    transport: undefined,
-    rehabilitation: undefined,
-    childLife: undefined,
-    socialWork: undefined,
-    pastoralCare: undefined,
-    familySupport: undefined,
-    quality: undefined,
-    research: undefined,
-    education: undefined,
-    disaster: undefined,
-    injury: undefined
+  personnel: {
+    has24HourPhysician: undefined,
+    hasPediatrician: undefined,
+    hasPediatricEM: undefined,
+    hasPediatricNurse: undefined,
+    hasPediatricRT: undefined,
+    hasPALS: undefined,
+    hasENPC: undefined,
+    hasTNCC: undefined,
+    hasATLS: undefined
   },
-  equipment: {
-    trauma: {
-      airway: undefined,
-      breathing: undefined,
-      circulation: undefined,
-      disability: undefined,
-      exposure: undefined
-    },
-    emergency: {
-      airway: undefined,
-      breathing: undefined,
-      circulation: undefined,
-      disability: undefined,
-      exposure: undefined
-    },
-    inpatient: {
-      airway: undefined,
-      breathing: undefined,
-      circulation: undefined,
-      disability: undefined,
-      exposure: undefined
-    },
-    outpatient: {
-      airway: undefined,
-      breathing: undefined,
-      circulation: undefined,
-      disability: undefined,
-      exposure: undefined
-    },
-    transport: {
-      airway: undefined,
-      breathing: undefined,
-      circulation: undefined,
-      disability: undefined,
-      exposure: undefined
-    },
-    rehabilitation: {
-      airway: undefined,
-      breathing: undefined,
-      circulation: undefined,
-      disability: undefined,
-      exposure: undefined
+  qualityImprovement: {
+    hasQIPlan: undefined,
+    components: {
+      trauma: undefined,
+      emergency: undefined,
+      inpatient: undefined,
+      outpatient: undefined,
+      transport: undefined,
+      rehabilitation: undefined,
+      childLife: undefined,
+      socialWork: undefined,
+      pastoralCare: undefined,
+      familySupport: undefined,
+      quality: undefined,
+      research: undefined,
+      education: undefined,
+      disaster: undefined,
+      injury: undefined
     }
+  },
+  patientSafety: {
+    weightInKg: undefined,
+    weightRecordedInKg: undefined,
+    vitalsRecorded: undefined,
+    bloodPressureMonitoring: undefined,
+    pulseOximetry: undefined,
+    endTidalCO2: undefined,
+    abnormalVitalsNotification: undefined,
+    preCalculatedDosing: undefined,
+    interpreterServices: undefined,
+    consciousnessAssessment: undefined,
+    painAssessment: undefined,
+    hasPediatricSafety: undefined,
+    hasPediatricMedication: undefined,
+    hasPediatricEquipment: undefined,
+    hasPediatricEnvironment: undefined,
+    hasPediatricHandoff: undefined,
+    hasPediatricTransfer: undefined,
+    hasPediatricDischarge: undefined,
+    hasPediatricFollowup: undefined
+  },
+  policies: {
+    triagePolicy: undefined,
+    assessmentReassessment: undefined,
+    immunizationAssessment: undefined,
+    childMaltreatment: undefined,
+    deathInED: undefined,
+    radiationReduction: undefined,
+    behavioralHealth: undefined,
+    transferGuidelines: undefined,
+    hasPediatricAdmission: undefined,
+    hasPediatricTransfer: undefined,
+    hasPediatricConsent: undefined,
+    hasPediatricRestraint: undefined,
+    hasPediatricTriage: undefined,
+    hasPediatricPain: undefined,
+    hasPediatricSedation: undefined,
+    hasPediatricImaging: undefined
+  },
+  familyCenteredCare: {
+    hasPolicy: undefined,
+    components: {
+      decisionMaking: undefined,
+      medicationSafety: undefined,
+      familyPresence: undefined,
+      education: undefined,
+      bereavement: undefined
+    },
+    hasFamilyPresence: undefined,
+    hasFamilySupport: undefined,
+    hasFamilyEducation: undefined,
+    hasFamilyFeedback: undefined,
+    hasCulturalCompetency: undefined,
+    hasLanguageServices: undefined,
+    hasInterpreter: undefined,
+    hasTranslation: undefined
+  },
+  disasterPlanning: {
+    addressesChildren: undefined,
+    components: {
+      medicationsSupplies: undefined,
+      decontamination: undefined,
+      familyReunification: undefined,
+      pediatricDrills: undefined,
+      surgeCapacity: undefined,
+      behavioralHealth: undefined,
+      socialServices: undefined,
+      specialNeeds: undefined
+    },
+    hasPediatricDisaster: undefined,
+    hasPediatricMassCasualty: undefined,
+    hasPediatricEvacuation: undefined,
+    hasPediatricShelter: undefined,
+    hasPediatricSupplies: undefined,
+    hasPediatricEquipment: undefined,
+    hasPediatricMedications: undefined,
+    hasPediatricStaff: undefined
+  },
+  equipmentManagement: {
+    hasPediatricInventory: undefined,
+    hasPediatricMaintenance: undefined,
+    hasPediatricCalibration: undefined,
+    hasPediatricReplacement: undefined,
+    hasPediatricTraining: undefined,
+    hasPediatricCompetency: undefined,
+    hasPediatricDocumentation: undefined,
+    hasPediatricQuality: undefined
+  },
+  monitoringEquipment: {
+    hasPediatricStethoscope: undefined,
+    hasPediatricBP: undefined,
+    hasPediatricThermometer: undefined,
+    hasPediatricScale: undefined,
+    hasPediatricECG: undefined,
+    hasPediatricPulse: undefined,
+    hasPediatricETCO2: undefined,
+    hasPediatricGlucose: undefined
+  },
+  resuscitationEquipment: {
+    gauge22: undefined,
+    gauge24: undefined,
+    ioNeedles: undefined,
+    ivAdministration: undefined,
+    hasPediatricBag: undefined,
+    hasPediatricSuction: undefined,
+    hasPediatricOxygen: undefined,
+    hasPediatricDefibrillator: undefined,
+    hasPediatricETT: undefined,
+    hasPediatricLMA: undefined,
+    hasPediatricIO: undefined,
+    hasPediatricChest: undefined
+  },
+  respiratoryEquipment: {
+    hasPediatricNebulizer: undefined,
+    hasPediatricSpacer: undefined,
+    hasPediatricMetered: undefined,
+    hasPediatricCPAP: undefined,
+    hasPediatricVentilator: undefined,
+    hasPediatricHighFlow: undefined,
+    hasPediatricSuction: undefined,
+    hasPediatricChest: undefined
   },
   patientVolume: {
     totalPatients: '',
@@ -579,137 +657,7 @@ export const getDefaultReadinessAssessment = (): ReadinessAssessment => ({
     pediatricEDVisits: '',
     pediatricICUAdmissions: '',
     pediatricTraumaAdmissions: ''
-  },
-  hasEmergencyDepartment: undefined,
-  emergencyDepartmentConfiguration: '',
-  emergencyDepartmentBeds: '',
-  emergencyDepartmentTraumaBays: '',
-  emergencyDepartmentTraumaBayConfiguration: '',
-  emergencyDepartmentTraumaBayEquipment: '',
-  emergencyDepartmentTraumaBayStaffing: '',
-  emergencyDepartmentTraumaBayProtocols: '',
-  emergencyDepartmentTraumaBayDocumentation: '',
-  emergencyDepartmentTraumaBayQuality: '',
-  emergencyDepartmentTraumaBayResearch: '',
-  emergencyDepartmentTraumaBayEducation: '',
-  emergencyDepartmentTraumaBayFamily: '',
-  emergencyDepartmentTraumaBayDisaster: '',
-  emergencyDepartmentTraumaBayInjury: '',
-  emergencyDepartmentTraumaBayTransport: '',
-  emergencyDepartmentTraumaBayRehabilitation: '',
-  emergencyDepartmentTraumaBayOutpatient: '',
-  emergencyDepartmentTraumaBayInpatient: '',
-  emergencyDepartmentTraumaBaySocial: '',
-  emergencyDepartmentTraumaBayPastoral: '',
-  emergencyDepartmentTraumaBayChildLife: '',
-  emergencyDepartmentTraumaBayQualityImprovement: '',
-  emergencyDepartmentTraumaBayResearchActivities: '',
-  emergencyDepartmentTraumaBayEducationActivities: '',
-  emergencyDepartmentTraumaBayFamilySupport: '',
-  emergencyDepartmentTraumaBayDisasterPreparedness: '',
-  emergencyDepartmentTraumaBayInjuryPrevention: '',
-  emergencyDepartmentTraumaBayTransportCoordination: '',
-  emergencyDepartmentTraumaBayRehabilitationCoordination: '',
-  emergencyDepartmentTraumaBayOutpatientCoordination: '',
-  emergencyDepartmentTraumaBayInpatientCoordination: '',
-  emergencyDepartmentTraumaBaySocialWorkCoordination: '',
-  emergencyDepartmentTraumaBayPastoralCareCoordination: '',
-  emergencyDepartmentTraumaBayChildLifeCoordination: '',
-  emergencyDepartmentTraumaBayQualityImprovementCoordination: '',
-  emergencyDepartmentTraumaBayResearchCoordination: '',
-  emergencyDepartmentTraumaBayEducationCoordination: '',
-  emergencyDepartmentTraumaBayFamilySupportCoordination: '',
-  emergencyDepartmentTraumaBayDisasterPreparednessCoordination: '',
-  emergencyDepartmentTraumaBayInjuryPreventionCoordination: '',
-  emergencyDepartmentTraumaBayTransportDocumentation: '',
-  emergencyDepartmentTraumaBayRehabilitationDocumentation: '',
-  emergencyDepartmentTraumaBayOutpatientDocumentation: '',
-  emergencyDepartmentTraumaBayInpatientDocumentation: '',
-  emergencyDepartmentTraumaBaySocialWorkDocumentation: '',
-  emergencyDepartmentTraumaBayPastoralCareDocumentation: '',
-  emergencyDepartmentTraumaBayChildLifeDocumentation: '',
-  emergencyDepartmentTraumaBayQualityImprovementDocumentation: '',
-  emergencyDepartmentTraumaBayResearchDocumentation: '',
-  emergencyDepartmentTraumaBayEducationDocumentation: '',
-  emergencyDepartmentTraumaBayFamilySupportDocumentation: '',
-  emergencyDepartmentTraumaBayDisasterPreparednessDocumentation: '',
-  emergencyDepartmentTraumaBayInjuryPreventionDocumentation: '',
-  emergencyDepartmentTraumaBayTransportQuality: '',
-  emergencyDepartmentTraumaBayRehabilitationQuality: '',
-  emergencyDepartmentTraumaBayOutpatientQuality: '',
-  emergencyDepartmentTraumaBayInpatientQuality: '',
-  emergencyDepartmentTraumaBaySocialWorkQuality: '',
-  emergencyDepartmentTraumaBayPastoralCareQuality: '',
-  emergencyDepartmentTraumaBayChildLifeQuality: '',
-  emergencyDepartmentTraumaBayQualityImprovementQuality: '',
-  emergencyDepartmentTraumaBayResearchQuality: '',
-  emergencyDepartmentTraumaBayEducationQuality: '',
-  emergencyDepartmentTraumaBayFamilySupportQuality: '',
-  emergencyDepartmentTraumaBayDisasterPreparednessQuality: '',
-  emergencyDepartmentTraumaBayInjuryPreventionQuality: '',
-  emergencyDepartmentTraumaBayTransportResearch: '',
-  emergencyDepartmentTraumaBayRehabilitationResearch: '',
-  emergencyDepartmentTraumaBayOutpatientResearch: '',
-  emergencyDepartmentTraumaBayInpatientResearch: '',
-  emergencyDepartmentTraumaBaySocialWorkResearch: '',
-  emergencyDepartmentTraumaBayPastoralCareResearch: '',
-  emergencyDepartmentTraumaBayChildLifeResearch: '',
-  emergencyDepartmentTraumaBayQualityImprovementResearch: '',
-  emergencyDepartmentTraumaBayEducationResearch: '',
-  emergencyDepartmentTraumaBayFamilySupportResearch: '',
-  emergencyDepartmentTraumaBayDisasterPreparednessResearch: '',
-  emergencyDepartmentTraumaBayInjuryPreventionResearch: '',
-  emergencyDepartmentTraumaBayTransportEducation: '',
-  emergencyDepartmentTraumaBayRehabilitationEducation: '',
-  emergencyDepartmentTraumaBayOutpatientEducation: '',
-  emergencyDepartmentTraumaBayInpatientEducation: '',
-  emergencyDepartmentTraumaBaySocialWorkEducation: '',
-  emergencyDepartmentTraumaBayPastoralCareEducation: '',
-  emergencyDepartmentTraumaBayChildLifeEducation: '',
-  emergencyDepartmentTraumaBayQualityImprovementEducation: '',
-  emergencyDepartmentTraumaBayResearchEducation: '',
-  emergencyDepartmentTraumaBayFamilySupportEducation: '',
-  emergencyDepartmentTraumaBayDisasterPreparednessEducation: '',
-  emergencyDepartmentTraumaBayInjuryPreventionEducation: '',
-  emergencyDepartmentTraumaBayTransportFamily: '',
-  emergencyDepartmentTraumaBayRehabilitationFamily: '',
-  emergencyDepartmentTraumaBayOutpatientFamily: '',
-  emergencyDepartmentTraumaBayInpatientFamily: '',
-  emergencyDepartmentTraumaBaySocialWorkFamily: '',
-  emergencyDepartmentTraumaBayPastoralCareFamily: '',
-  emergencyDepartmentTraumaBayChildLifeFamily: '',
-  emergencyDepartmentTraumaBayQualityImprovementFamily: '',
-  emergencyDepartmentTraumaBayResearchFamily: '',
-  emergencyDepartmentTraumaBayEducationFamily: '',
-  emergencyDepartmentTraumaBayFamilySupportFamily: '',
-  emergencyDepartmentTraumaBayDisasterPreparednessFamily: '',
-  emergencyDepartmentTraumaBayInjuryPreventionFamily: '',
-  emergencyDepartmentTraumaBayTransportDisaster: '',
-  emergencyDepartmentTraumaBayRehabilitationDisaster: '',
-  emergencyDepartmentTraumaBayOutpatientDisaster: '',
-  emergencyDepartmentTraumaBayInpatientDisaster: '',
-  emergencyDepartmentTraumaBaySocialWorkDisaster: '',
-  emergencyDepartmentTraumaBayPastoralCareDisaster: '',
-  emergencyDepartmentTraumaBayChildLifeDisaster: '',
-  emergencyDepartmentTraumaBayQualityImprovementDisaster: '',
-  emergencyDepartmentTraumaBayResearchDisaster: '',
-  emergencyDepartmentTraumaBayEducationDisaster: '',
-  emergencyDepartmentTraumaBayFamilySupportDisaster: '',
-  emergencyDepartmentTraumaBayDisasterPreparednessDisaster: '',
-  emergencyDepartmentTraumaBayInjuryPreventionDisaster: '',
-  emergencyDepartmentTraumaBayTransportInjury: '',
-  emergencyDepartmentTraumaBayRehabilitationInjury: '',
-  emergencyDepartmentTraumaBayOutpatientInjury: '',
-  emergencyDepartmentTraumaBayInpatientInjury: '',
-  emergencyDepartmentTraumaBaySocialWorkInjury: '',
-  emergencyDepartmentTraumaBayPastoralCareInjury: '',
-  emergencyDepartmentTraumaBayChildLifeInjury: '',
-  emergencyDepartmentTraumaBayQualityImprovementInjury: '',
-  emergencyDepartmentTraumaBayResearchInjury: '',
-  emergencyDepartmentTraumaBayEducationInjury: '',
-  emergencyDepartmentTraumaBayFamilySupportInjury: '',
-  emergencyDepartmentTraumaBayDisasterPreparednessInjury: '',
-  emergencyDepartmentTraumaBayInjuryPreventionInjury: ''
+  }
 });
 
 export const useUserStorage = () => {
@@ -815,6 +763,60 @@ export const getReadinessAssessment = async (): Promise<ReadinessAssessment> => 
         childrenInAdultStepDown: undefined,
         childrenInAdultWard: undefined
       },
+      administration: {
+        physicianCoordinator: {
+          hasCoordinator: undefined,
+          type: '',
+          hasDedicatedTime: undefined,
+          scope: ''
+        },
+        nurseCoordinator: {
+          hasCoordinator: undefined,
+          type: '',
+          hasDedicatedTime: undefined,
+          scope: ''
+        },
+        hasPediatricED: undefined,
+        hasPediatricInpatient: undefined,
+        hasPediatricICU: undefined,
+        hasPediatricSurgery: undefined
+      },
+      personnel: {
+        has24HourPhysician: undefined,
+        hasPediatrician: undefined,
+        hasPediatricEM: undefined,
+        hasPediatricNurse: undefined,
+        hasPediatricRT: undefined,
+        hasPALS: undefined,
+        hasENPC: undefined,
+        hasTNCC: undefined,
+        hasATLS: undefined
+      },
+      qualityImprovement: {
+        hasQIPlan: undefined,
+        components: {
+          trauma: undefined,
+          emergency: undefined,
+          inpatient: undefined,
+          outpatient: undefined,
+          transport: undefined,
+          rehabilitation: undefined,
+          childLife: undefined,
+          socialWork: undefined,
+          pastoralCare: undefined,
+          familySupport: undefined,
+          quality: undefined,
+          research: undefined,
+          education: undefined,
+          disaster: undefined,
+          injury: undefined
+        }
+      },
+      patientSafety: {
+        weightInKg: undefined,
+        weightRecordedInKg: undefined,
+        vitalsRecorded: undefined,
+        bloodPressureMonitoring: undefined,
       coordinator: {
         identified: undefined,
         type: '',
