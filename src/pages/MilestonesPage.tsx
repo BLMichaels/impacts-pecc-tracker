@@ -5,12 +5,6 @@ import {
   Paper,
   Checkbox,
   FormControlLabel,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  TextField,
   List,
   ListItem,
   ListItemText,
@@ -18,11 +12,8 @@ import {
   Chip,
   Stack
 } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import { useUserStorage } from '../utils/storage';
-import type { Milestone } from '../utils/storage';
-
-type NewMilestone = Omit<Milestone, 'id' | 'completed' | 'category'>;
+import { useUserStorage } from '../../src/utils/storage';
+import type { Milestone } from '../../src/utils/storage';
 
 const categoryLabels: Record<Milestone['category'], string> = {
   initial: 'Initial Setup',
@@ -38,13 +29,6 @@ const categoryLabels: Record<Milestone['category'], string> = {
 const MilestonesPage: React.FC = () => {
   const { getData, saveData } = useUserStorage();
   const [milestones, setMilestones] = useState<Milestone[]>([]);
-  const [open, setOpen] = useState(false);
-  const [newMilestone, setNewMilestone] = useState<NewMilestone>({
-    title: '',
-    description: '',
-    links: [],
-    subItems: []
-  });
 
   useEffect(() => {
     const data = getData();
@@ -62,27 +46,7 @@ const MilestonesPage: React.FC = () => {
     saveData({ milestones: updatedMilestones });
   };
 
-  const handleAddMilestone = () => {
-    const newId = Math.max(...milestones.map(m => m.id), 0) + 1;
-    const milestoneToAdd: Milestone = {
-      ...newMilestone,
-      id: newId,
-      completed: false,
-      category: 'initial' // Default category
-    };
-    const updatedMilestones = [...milestones, milestoneToAdd];
-    setMilestones(updatedMilestones);
-    saveData({ milestones: updatedMilestones });
-    setOpen(false);
-    setNewMilestone({
-      title: '',
-      description: '',
-      links: [],
-      subItems: []
-    });
-  };
-
-  const groupedMilestones = milestones.reduce((acc, milestone) => {
+  const groupedMilestones = milestones.reduce<Record<Milestone['category'], Milestone[]>>((acc, milestone) => {
     if (!acc[milestone.category]) {
       acc[milestone.category] = [];
     }
@@ -96,14 +60,14 @@ const MilestonesPage: React.FC = () => {
         PECC Milestones
       </Typography>
 
-      {Object.entries(groupedMilestones).map(([category, categoryMilestones]) => (
+      {(Object.entries(groupedMilestones) as [Milestone['category'], Milestone[]][]).map(([category, categoryMilestones]) => (
         <Box key={category} sx={{ mb: 4 }}>
           <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
-            {categoryLabels[category as Milestone['category']]}
+            {categoryLabels[category]}
           </Typography>
           <Paper sx={{ p: 2 }}>
             <List>
-              {categoryMilestones.map((milestone) => (
+              {categoryMilestones.map((milestone: Milestone) => (
                 <React.Fragment key={milestone.id}>
                   <ListItem>
                     <ListItemText
@@ -131,7 +95,7 @@ const MilestonesPage: React.FC = () => {
                           </Typography>
                           {milestone.subItems && milestone.subItems.length > 0 && (
                             <List sx={{ pl: 2 }}>
-                              {milestone.subItems.map((item, index) => (
+                              {milestone.subItems.map((item: string, index: number) => (
                                 <ListItem key={index} sx={{ py: 0 }}>
                                   <ListItemText
                                     primary={
@@ -146,7 +110,7 @@ const MilestonesPage: React.FC = () => {
                           )}
                           {milestone.links && milestone.links.length > 0 && (
                             <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: 'wrap', gap: 1 }}>
-                              {milestone.links.map((link, index) => {
+                              {milestone.links.map((link: { text: string; url: string }, index: number) => {
                                 console.log('Rendering link:', link);
                                 return (
                                   <a
@@ -182,44 +146,6 @@ const MilestonesPage: React.FC = () => {
           </Paper>
         </Box>
       ))}
-
-      <Button
-        variant="contained"
-        startIcon={<AddIcon />}
-        onClick={() => setOpen(true)}
-        sx={{ position: 'fixed', bottom: 16, right: 16 }}
-      >
-        Add Milestone
-      </Button>
-
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Add New Milestone</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Title"
-            fullWidth
-            value={newMilestone.title}
-            onChange={(e) => setNewMilestone({ ...newMilestone, title: e.target.value })}
-          />
-          <TextField
-            margin="dense"
-            label="Description"
-            fullWidth
-            multiline
-            rows={4}
-            value={newMilestone.description}
-            onChange={(e) => setNewMilestone({ ...newMilestone, description: e.target.value })}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpen(false)}>Cancel</Button>
-          <Button onClick={handleAddMilestone} variant="contained">
-            Add
-          </Button>
-        </DialogActions>
-      </Dialog>
     </Box>
   );
 };

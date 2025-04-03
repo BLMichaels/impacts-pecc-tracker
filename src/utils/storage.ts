@@ -475,6 +475,124 @@ const defaultEmptyAssessment = (): ReadinessAssessment => ({
   }
 });
 
+export const getDefaultMilestones = (): Milestone[] => {
+  return [
+    {
+      id: 1,
+      category: 'initial',
+      title: 'Reach out and contact your ED nursing leadership',
+      description: 'Contact manager, educator, director and physician partners (medical director)',
+      completed: false,
+      links: [
+        { text: 'Email template', url: 'https://docs.google.com/document/d/14QcAO6S8llniLOKo-NoIuwDpYgo63GCN/edit' }
+      ]
+    },
+    {
+      id: 2,
+      category: 'initial',
+      title: 'Share information about Pediatric Readiness',
+      description: 'Review key documents and resources about pediatric readiness',
+      completed: false,
+      links: [
+        { text: 'Joint Policy Statement', url: 'https://publications.aap.org/pediatrics/article/142/5/e20182459/38608/Pediatric-Readiness-in-the-Emergency-Department?autologincheck=redirected' },
+        { text: 'Pediatric Readiness Assessment', url: 'https://emscimprovement.center/domains/pediatric-readiness-project/assessment/' },
+        { text: 'Pediatric Readiness Saves Lives', url: 'https://media.emscimprovement.center/documents/Pediatric_Readiness_Outcomes_-_2023_Q5q8cow.pdf' },
+        { text: 'Importance of the PECC', url: 'https://emscimprovement.center/domains/pecc/' }
+      ]
+    },
+    {
+      id: 3,
+      category: 'initial',
+      title: 'Identify PECC or champion and sign community ED commitment letter',
+      description: 'Complete and sign the commitment letter for your ED',
+      completed: false,
+      links: [
+        { text: 'Commitment Letter', url: 'https://docs.google.com/document/d/1zuOqjQEjMox9fykO4Lgj0tNfk0TXufJtcozLX0_ATQM/edit?tab=t.0' }
+      ]
+    },
+    {
+      id: 4,
+      category: 'ongoing',
+      title: 'Monthly PECC Activities',
+      description: 'Regular activities to maintain pediatric readiness',
+      completed: false,
+      subItems: [
+        'Review pediatric cases',
+        'Update policies and procedures',
+        'Coordinate staff education',
+        'Equipment checks',
+        'Quality improvement initiatives'
+      ]
+    },
+    {
+      id: 5,
+      category: 'prs',
+      title: 'Complete Pediatric Readiness Survey',
+      description: 'Assess your ED\'s current pediatric readiness status',
+      completed: false,
+      links: [
+        { text: 'PRS Resources', url: 'https://emscimprovement.center/domains/pediatric-readiness-project/readiness-toolkit/' }
+      ]
+    },
+    {
+      id: 6,
+      category: 'equipment',
+      title: 'Equipment and Supplies Assessment',
+      description: 'Review and maintain pediatric equipment and supplies',
+      completed: false,
+      links: [
+        { text: 'Equipment Checklist', url: 'https://emscimprovement.center/domains/pediatric-readiness-project/readiness-toolkit/readiness-toolkit-checklist/equipment/' }
+      ]
+    },
+    {
+      id: 7,
+      category: 'patient-safety',
+      title: 'Patient Safety Initiatives',
+      description: 'Implement pediatric-specific safety measures',
+      completed: false,
+      subItems: [
+        'Weight-based medication dosing',
+        'Pediatric-specific equipment',
+        'Safety checklists',
+        'Family-centered care'
+      ]
+    },
+    {
+      id: 8,
+      category: 'staffing',
+      title: 'Staff Training and Competency',
+      description: 'Ensure staff competency in pediatric care',
+      completed: false,
+      links: [
+        { text: 'Training Resources', url: 'https://emscimprovement.center/domains/pediatric-readiness-project/readiness-toolkit/readiness-toolkit-checklist/competencies/' }
+      ]
+    },
+    {
+      id: 9,
+      category: 'policies',
+      title: 'Policies and Procedures Review',
+      description: 'Develop and maintain pediatric-specific policies',
+      completed: false,
+      links: [
+        { text: 'Policy Templates', url: 'https://emscimprovement.center/domains/pediatric-readiness-project/readiness-toolkit/readiness-toolkit-checklist/policies/' }
+      ]
+    },
+    {
+      id: 10,
+      category: 'qi',
+      title: 'Quality Improvement Program',
+      description: 'Establish pediatric quality metrics and improvement processes',
+      completed: false,
+      subItems: [
+        'Data collection',
+        'Case reviews',
+        'Performance metrics',
+        'Improvement initiatives'
+      ]
+    }
+  ];
+};
+
 export const useUserStorage = () => {
   const { user } = useAuth();
 
@@ -482,7 +600,7 @@ export const useUserStorage = () => {
     if (!user?.email) {
       return {
         activities: [],
-        milestones: [],
+        milestones: getDefaultMilestones(),
         readinessAssessment: defaultEmptyAssessment()
       };
     }
@@ -492,7 +610,7 @@ export const useUserStorage = () => {
     if (!storedData) {
       return {
         activities: [],
-        milestones: [],
+        milestones: getDefaultMilestones(),
         readinessAssessment: defaultEmptyAssessment()
       };
     }
@@ -501,14 +619,14 @@ export const useUserStorage = () => {
       const parsedData = JSON.parse(storedData);
       return {
         activities: parsedData.activities || [],
-        milestones: parsedData.milestones || [],
+        milestones: parsedData.milestones || getDefaultMilestones(),
         readinessAssessment: parsedData.readinessAssessment || defaultEmptyAssessment()
       };
     } catch (e) {
       console.error('Error parsing stored data:', e);
       return {
         activities: [],
-        milestones: [],
+        milestones: getDefaultMilestones(),
         readinessAssessment: defaultEmptyAssessment()
       };
     }
